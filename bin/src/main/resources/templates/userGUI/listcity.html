@@ -1,0 +1,173 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <head th:insert="userGUI/fragments.html::headfile"/>
+</head>
+
+<body>
+<div>
+    <!-- Header Start -->
+    <div th:insert="userGUI/fragments.html::menufile">
+    </div>
+    <!-- Header End -->
+</div>
+
+<main>
+    <!-- slider Area Start-->
+    <div class="slider-area ">
+        <!-- Mobile Menu -->
+        <div class="single-slider slider-height2 d-flex align-items-center"
+             th:style="'background-image:url(' + @{/bootstrapuser/assets/img/hero/hero_2.jpeg}+')'">
+<!--            <img th:src="">-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="hero-cap text-center">
+                            <h2>Chào mừng bạn đến với Việt Nam</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- slider Area End-->
+
+    <!-- Favourite Places Start -->
+    <div class="favourite-place place-padding mt-0 pt-5 pb-5">
+        <div class="container">
+            <!-- Section Tittle -->
+            <div class="row">
+                <div class="col-lg-7">
+                </div>
+                <div class="col-lg-5">
+                    <form action="#">
+                        <div class="form-group row">
+                            <div class="input-group p-5">
+                                <input  type="text" class="form-control col-lg-9 p-4" name="s"
+                                       placeholder='Nhập nơi bạn muốn đến...'>
+                                <button class="btn btn-outline-primary pt-0 pb-0 col-lg-3" type="submit">
+                                    <i class="ti-search"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-xl-6 col-lg-6 col-md-6" th:each="city : ${cityEntityPage}">
+                    <div class="single-place mb-30">
+                        <div class="place-img">
+                            <img th:src="@{'~/upload/'+${city.image}}" height="350"
+                                 th:alt="${city.cityName}"/>
+                        </div>
+                        <div class="place-cap">
+                            <div class="place-cap-top">
+                                <a th:href="@{'/upload/'+${city.id}}"><h3 th:text="${city.title}"></h3></a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Favourite Places End -->
+
+    <!-- Pagination-area Start -->
+    <div class="pagination-area pb-100 text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="single-wrap d-flex justify-content-center">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-start">
+                                <li class="page-item"><a class="page-link"
+                                                         th:href="@{'/city'(page=${cityEntityPage.number - 1})}"
+                                                         th:if="${cityEntityPage.hasPrevious()}"><span
+                                        class="flaticon-arrow roted left-arrow"></span></a>
+                                </li>
+                                <li class="page-item">
+                                <span th:text="${cityEntityPage.number + 1}"></span>/<span
+                                    th:text="${cityEntityPage.totalPages}"></span>
+                                </li>
+                                <li class="page-item"><a class="page-link"
+                                                         th:href="@{'/city'(page=${cityEntityPage.number + 1})}"
+                                                         th:if="${cityEntityPage.hasNext()}"><span
+                                        class="flaticon-arrow right-arrow"></span></a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Pagination-area End -->
+</main>
+
+<footer th:insert="userGUI/fragments.html::footerfile">
+
+
+</footer>
+<!-- JS here -->
+
+<!-- All JS Custom Plugins Link Here here -->
+<script
+        th:href="@{~/bootstrapuser/assets/js/vendor/modernizr-3.5.0.min.js}"></script>
+
+<!-- Jquery, Popper, Bootstrap -->
+<script
+        th:href="@{~/bootstrapuser/assets/js/vendor/jquery-1.12.4.min.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/popper.min.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/bootstrap.min.js}"></script>
+<!-- Jquery Mobile Menu -->
+<script
+        th:href="@{~/bootstrapuser/assets/js/jquery.slicknav.min.js}"></script>
+
+<!-- Jquery Slick , Owl-Carousel Plugins -->
+<script
+        th:href="@{~/bootstrapuser/assets/js/owl.carousel.min.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/slick.min.js}"></script>
+<!-- One Page, Animated-HeadLin -->
+<script
+        th:href="@{~/bootstrapuser/assets/js/wow.min.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/animated.headline.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/jquery.magnific-popup.js}"></script>
+
+<!-- Scrollup, nice-select, sticky -->
+<script
+        th:href="@{~/bootstrapuser/assets/js/jquery.scrollUp.min.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/jquery.nice-select.min.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/jquery.sticky.js}"></script>
+
+<!-- contact js -->
+<script
+        th:href="@{~/bootstrapuser/assets/js/contact.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/jquery.form.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/jquery.validate.min.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/mail-script.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/jquery.ajaxchimp.min.js}"></script>
+
+<!-- Jquery Plugins, main Jquery -->
+<script
+        th:href="@{~/bootstrapuser/assets/js/plugins.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/main.js}"></script>
+
+</body>
+</html>

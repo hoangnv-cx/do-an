@@ -1,0 +1,203 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <head th:insert="userGUI/fragments.html::headfile"/>
+</head>
+
+<body>
+<div th:insert="userGUI/fragments.html::menufile">
+</div>
+<main th:each="category:${specialCategory}">
+    <div class="slider-area ">
+        <!-- Mobile Menu -->
+        <div class="single-slider slider-height2 d-flex align-items-center"
+             th:style="'background-image:url(' + @{'~/upload/'+${category.image}}+')'">
+            <div class="container bg-gradient-danger">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="hero-cap text-center ">
+                            <h2 th:text="${category.title}"></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- slider Area End-->
+    <!--================Blog Area =================-->
+    <section class="blog_area single-post-area section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 posts-list">
+                    <div class="single-post">
+                        <div class="feature-img">
+                            <img class="img-fluid" src="assets/img/blog/single_blog_1.png" alt="">
+                        </div>
+                        <div class="blog_details">
+                            <h1 th:text="${category.title}">
+                            </h1>
+                            <ul class="blog-info-link mt-3 mb-4">
+                                <li><a href="#"><i class="fas fa-shuttle-van"></i>Food and restaurant</a></li>
+                            </ul>
+
+                            <p class="excert text-justify" th:utext="${category.description}">
+                            <h3>Địa chỉ</h3>
+                            <p class="excert text-justify" th:utext="${category.location}">
+                            <h3>Giá tiền</h3>
+                            <p class="excert" th:utext="${category.cost}">
+
+                        </div>
+                    </div>
+                    <div class="navigation-top">
+                        <div class="d-sm-flex justify-content-between text-center">
+                            <ul class="social-icons">
+                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fab fa-dribbble"></i></a></li>
+                                <li><a href="#"><i class="fab fa-behance"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    <div class="comments-area" >
+                        <h4>Bình luận</h4>
+                        <div class="comment-list"th:each="comment:${specialComment}">
+                            <div class="single-comment justify-content-between d-flex">
+                                <div class="user justify-content-between d-flex">
+                                    <div class="thumb">
+                                        <img src="assets/img/comment/comment_1.png" alt="">
+                                    </div>
+                                    <div class="desc">
+                                        <p class="comment" th:text="${comment.content}">
+
+                                        </p>
+                                        <div class="d-flex justify-content-between">
+                                            <div class="d-flex align-items-center">
+                                                <h5 th:text="${comment.userComment.getUserName()}">
+                                                </h5>
+                                                <p class="date"th:text="${comment.createdAt}"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comment-form">
+                        <h4>Để lại bình luận</h4>
+                        <form class="form-contact comment_form" th:object="${comments}" th:action="@{'/comment/special/add/'+${category.getId()}}" method="POST">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <input type="hidden" th:field="${comments.id}">
+                                        <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9"
+                                                  placeholder="Write Comment" th:field="${comments.content}"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="button button-contactForm btn_1 boxed-btn">Gửi bình luận</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+                <div class="col-lg-4">
+                    <div class="blog_right_sidebar">
+                        <aside class="single_sidebar_widget search_widget">
+                            <form action="#">
+                                <div class="form-group">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" placeholder='Search Keyword'
+                                               onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
+                                        <div class="input-group-append">
+                                            <button class="btns" type="button"><i class="ti-search"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+                                        type="submit">Search</button>
+                            </form>
+                        </aside>
+                        <aside th:insert="userGUI/tour.html::asidefile">
+                        </aside>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Favourite Places End -->
+
+    <!-- Pagination-area Start -->
+
+    <!-- Pagination-area End -->
+</main>
+
+<footer th:insert="userGUI/fragments.html::footerfile">
+
+
+</footer>
+
+
+<!-- JS here -->
+
+<!-- All JS Custom Plugins Link Here here -->
+<script
+        th:href="@{~/bootstrapuser/assets/js/vendor/modernizr-3.5.0.min.js}"></script>
+
+<!-- Jquery, Popper, Bootstrap -->
+<script
+        th:href="@{~/bootstrapuser/assets/js/vendor/jquery-1.12.4.min.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/popper.min.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/bootstrap.min.js}"></script>
+<!-- Jquery Mobile Menu -->
+<script
+        th:href="@{~/bootstrapuser/assets/js/jquery.slicknav.min.js}"></script>
+
+<!-- Jquery Slick , Owl-Carousel Plugins -->
+<script
+        th:href="@{~/bootstrapuser/assets/js/owl.carousel.min.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/slick.min.js}"></script>
+<!-- One Page, Animated-HeadLin -->
+<script
+        th:href="@{~/bootstrapuser/assets/js/wow.min.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/animated.headline.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/jquery.magnific-popup.js}"></script>
+
+<!-- Scrollup, nice-select, sticky -->
+<script
+        th:href="@{~/bootstrapuser/assets/js/jquery.scrollUp.min.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/jquery.nice-select.min.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/jquery.sticky.js}"></script>
+
+<!-- contact js -->
+<script
+        th:href="@{~/bootstrapuser/assets/js/contact.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/jquery.form.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/jquery.validate.min.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/mail-script.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/jquery.ajaxchimp.min.js}"></script>
+
+<!-- Jquery Plugins, main Jquery -->
+<script
+        th:href="@{~/bootstrapuser/assets/js/plugins.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/main.js}"></script>
+
+</body>
+</html>

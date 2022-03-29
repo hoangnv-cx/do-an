@@ -1,0 +1,225 @@
+<!--<%@page import="tour.DAO.User.UserDao"%>-->
+<!--<%@page import="tour.DAO.User.UserDaoImpl"%>-->
+<!--<%@page import="tour.Connection.ConnectionPool"%>-->
+<html xmlns:th="http://www.thymeleaf.org"
+>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>VietNam tourism product managemnt</title>
+
+    <!-- Custom fonts for this template-->
+    <link th:href="@{~/bootstrap/vendor/fontawesome-free/css/all.min.css}"
+          rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link th:href="@{~/bootstrap/css/sb-admin-2.min.css}"
+          rel="stylesheet">
+    <script th:src="@{~/bootstrap/ckeditor/ckeditor.js}"></script>
+
+
+</head>
+
+<body id="page-top">
+
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- header and content-->
+        <div id="content">
+
+
+            <!-- Header -->
+
+
+            <!-- Content -->
+
+
+            <div class="container-fluid">
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col-lg-1"></div>
+                            <div class="col-lg-10">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Cập nhật khu nghỉ dưỡng</h1>
+                                    </div>
+                                    <form th:object="${resortID}" th:action="@{'/management/resort/update/'+${resortID.id}}"
+                                          method="POST" enctype="multipart/form-data">
+                                        <div class="form-group row">
+                                            <div class="col-sm-2 mb-3 mb-sm-0">ID</div>
+                                            <div class="col-sm-10 mb-3 mb-sm-0">
+                                                <input type="text" class="form-control form-control-user"
+                                                       id="username" placeholder="ID" readonly
+                                                       th:field="*{id}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-2 mb-3 mb-sm-0">Tiêu đề</div>
+                                            <div class="col-sm-10 mb-3 mb-sm-0">
+                                                    <textarea type="text" class="form-control"
+                                                              id="tieude" placeholder="Tiêu đề"
+                                                              th:field="*{title}"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-2 mb-3 mb-sm-0">Ảnh</div>
+                                            <div class="col-sm-10 mb-3 mb-sm-0">
+                                            <input type="file" class="form-control"
+                                                      id="img" placeholder="ảnh"
+                                                      th:field="*{fileImg}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row" >
+                                            <div class="col-sm-2 mb-3 mb-sm-0">Thành phố</div>
+                                            <div class="col-sm-10 mb-3 mb-sm-0">
+                                                <select class="custom-select" th:field="*{resortCity}">
+                                                    <option th:each="cities : ${cityList}"
+                                                            th:value="${cities.id}"
+                                                            th:text="${cities.cityName}"></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-2 mb-3 mb-sm-0">Vị trí</div>
+                                            <div class="col-sm-10 mb-3 mb-sm-0">
+                                            <textarea type="text" class="form-control"
+                                                      id="location" placeholder="Vị trí"
+                                                      th:field="*{location}"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-2 mb-3 mb-sm-0">Mô tả</div>
+                                            <div class="col-sm-10 mb-3 mb-sm-0">
+                                                <textarea type="text" class="form-control"
+                                                          id="moTa" placeholder="Mô tả"
+                                                          th:field="*{description}"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-2 mb-3 mb-sm-0">Giá tiền</div>
+                                            <div class="col-sm-10 mb-3 mb-sm-0">
+                                            <textarea type="text" class="form-control"
+                                                      id="cost" placeholder="Giá tiền"
+                                                      th:field="*{cost}"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-2 mb-3 mb-sm-0">Tiện nghi</div>
+                                            <div class="col-sm-10 mb-3 mb-sm-0">
+                                            <textarea type="text" class="form-control"
+                                                      id="convent" placeholder="Tiện nghi"
+                                                      th:field="*{convenient}"></textarea>
+                                            </div>
+                                        </div>
+                                        <script language="javascript" type="text/javascript">
+                                            CKEDITOR.replace('moTa');
+                                        </script>
+
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-primary">Cập nhật</button>
+                                            <a th:href="@{/management/resorts}"
+                                               class="btn btn-primary"> Hủy bỏ
+
+                                            </a>
+                                        </div>
+                                        <hr>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- footer -->
+
+        <footer class="sticky-footer bg-white">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright &copy; Your Website 2020</span>
+                </div>
+            </div>
+        </footer>
+        <!-- End of Footer -->
+
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+<!-- Logout Modal-->
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Bạn muốn đăng
+                    xuất tài khoản này?</h5>
+                <button class="close" type="button" data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Chọn "Đăng xuất" để thoát khỏi tài khoản</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button"
+                        data-dismiss="modal">Hủy
+                </button>
+                <a class="btn btn-primary"
+                   th:href="@{~/logout}">Đăng xuất</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript-->
+<script th:src="@{~/bootstrap/vendor/jquery/jquery.min.js}"></script>
+<script th:src="@{~/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+<!-- Core plugin JavaScript-->
+<script th:src="@{~/bootstrap/vendor/jquery-easing/jquery.easing.min.js}"></script>
+
+<!-- Custom scripts for all pages-->
+<script th:src="@{~/bootstrap/js/sb-admin-2.min.js}"></script>
+
+<!-- Page level plugins -->
+<script th:src="@{~/bootstrap/vendor/chart.js/Chart.min.js}"></script>
+
+<!-- Page level custom scripts -->
+<script th:src="@{~/bootstrap/js/demo/chart-area-demo.js}"></script>
+<script th:src="@{~/bootstrap/js/demo/chart-pie-demo.js}"></script>
+
+</body>
+
+</html>

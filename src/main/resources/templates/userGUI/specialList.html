@@ -1,0 +1,136 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <head th:insert="userGUI/fragments.html::headfile"/>
+</head>
+
+<body>
+<div th:insert="userGUI/fragments.html::menufile">
+</div>
+<main th:each="city:${cityList}">
+  <div class="slider-area ">
+    <!-- Mobile Menu -->
+    <div class="single-slider slider-height2 d-flex align-items-center"
+         th:style="'background-image:url(' + @{'~/upload/'+${city.image}}+')'">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="hero-cap text-center">
+              <h2 th:text="${city.cityName}"></h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- slider Area End-->
+  <!-- Favourite Places Start -->
+  <div class="favourite-place place-padding">
+    <div class="container">
+      <!-- Section Tittle -->
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="section-tittle text-center">
+            <span>Khám phá đặc sản</span>
+            <h2 th:text="${city.cityName}"></h2>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-4 col-lg-4 col-md-6" th:each="special:${specialCategory}">
+          <div class="single-place mb-30">
+            <div class="place-img">
+              <img height="250px" width="370px" th:src="@{'~/upload/'+${special.image}}" alt="">
+            </div>
+            <div class="place-cap">
+              <div class="place-cap-top">
+                <span><i class="fas fa-star"></i><span th:text="${special.comment.size()}"> Comment</span> </span>
+                <a th:href="@{'/special/'+${special.id}}"><h3 th:text="${special.title}"></h3></a>
+                <p class="dolor"> <span th:text="${special.cost}"></span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Favourite Places End -->
+  <section class="sample-text-area pt-0">
+    <div class="container box_1170">
+      <h3 class="text-heading" th:text="'Giới thiệu về du lịch '+${city.cityName}">Giới thiệu về du lịch </h3>
+      <p class="sample-text" th:utext="${city.description}">
+
+
+      </p>
+    </div>
+  </section>
+
+  <!-- Pagination-area End -->
+</main>
+
+<footer th:insert="userGUI/fragments.html::footerfile">
+
+
+</footer>
+
+
+<!-- JS here -->
+
+<!-- All JS Custom Plugins Link Here here -->
+<script
+        th:href="@{~/bootstrapuser/assets/js/vendor/modernizr-3.5.0.min.js}"></script>
+
+<!-- Jquery, Popper, Bootstrap -->
+<script
+        th:href="@{~/bootstrapuser/assets/js/vendor/jquery-1.12.4.min.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/popper.min.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/bootstrap.min.js}"></script>
+<!-- Jquery Mobile Menu -->
+<script
+        th:href="@{~/bootstrapuser/assets/js/jquery.slicknav.min.js}"></script>
+
+<!-- Jquery Slick , Owl-Carousel Plugins -->
+<script
+        th:href="@{~/bootstrapuser/assets/js/owl.carousel.min.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/slick.min.js}"></script>
+<!-- One Page, Animated-HeadLin -->
+<script
+        th:href="@{~/bootstrapuser/assets/js/wow.min.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/animated.headline.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/jquery.magnific-popup.js}"></script>
+
+<!-- Scrollup, nice-select, sticky -->
+<script
+        th:href="@{~/bootstrapuser/assets/js/jquery.scrollUp.min.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/jquery.nice-select.min.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/jquery.sticky.js}"></script>
+
+<!-- contact js -->
+<script
+        th:href="@{~/bootstrapuser/assets/js/contact.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/jquery.form.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/jquery.validate.min.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/mail-script.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/jquery.ajaxchimp.min.js}"></script>
+
+<!-- Jquery Plugins, main Jquery -->
+<script
+        th:href="@{~/bootstrapuser/assets/js/plugins.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/main.js}"></script>
+
+</body>
+</html>

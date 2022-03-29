@@ -1,0 +1,169 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <head th:insert="userGUI/fragments.html::headfile"/>
+</head>
+
+<body>
+<div th:insert="userGUI/fragments.html::menufile">
+</div>
+
+<div class="section-top-border mybackground">
+
+    <div class="container-fluid">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-3"></div>
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Đăng ký</h1>
+                            </div>
+                            <form  th:object="${users}" th:action="@{/signin}"
+                                   method="POST">
+                                <div class="form-group row" >
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user"
+                                               id="username" placeholder="Tên đăng nhập"
+                                               th:field="*{userName}">
+                                        <span th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="password"
+                                               class="form-control form-control-user"
+                                               id="Password" placeholder="Mật khẩu"
+                                               th:field="*{passWord}">
+                                        <span th:if="${#fields.hasErrors('passWord')}" th:errors="*{passWord}" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user"
+                                           id="" placeholder="Tên"
+                                           th:field="*{fullName}">
+                                    <span th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}" class="text-danger"></span>
+
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control form-control-user"
+                                           id="exampleInputEmail" placeholder="Email Address"
+                                           th:field="*{email}">
+                                    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user"
+                                               id="exampleInputPassword" placeholder="Điện thoại"
+                                               th:field="*{phone}">
+                                        <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control form-control-user"
+                                               id="diachi" placeholder="Địa chỉ"
+                                               th:field="*{address}">
+                                        <span th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="text-danger"></span>
+                                    </div>
+                                </div>
+<!--                                <div class="form-group row">-->
+<!--                                    <div class="col-sm-2 mb-3 mb-sm-0">Vai trò</div>-->
+<!--                                    <div class="col-sm-10 mb-3 mb-sm-0">-->
+<!--                                        <select class="custom-select"  th:field="*{roles}">-->
+<!--                                            <option th:each="role :${roleList}"-->
+<!--                                                    th:value="${role.id}" th:text="${role.roleName}"></option>-->
+<!--                                        </select>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+
+                                <label th:if="${param.error}" class="text-danger">
+                                    Có lỗi xảy ra, vui lòng kiểm tra lại</label>
+
+
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary">Thêm</button>
+                                    <a href="#" th:href="@{/admin/users}"> Hủy bỏ
+
+                                    </a>
+                                </div>
+                                <hr>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+<footer th:insert="userGUI/fragments.html::footerfile">
+
+
+</footer>
+<!-- JS here -->
+
+<!-- All JS Custom Plugins Link Here here -->
+<script
+        th:href="@{~/bootstrapuser/assets/js/vendor/modernizr-3.5.0.min.js}"></script>
+
+<!-- Jquery, Popper, Bootstrap -->
+<script
+        th:href="@{~/bootstrapuser/assets/js/vendor/jquery-1.12.4.min.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/popper.min.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/bootstrap.min.js}"></script>
+<!-- Jquery Mobile Menu -->
+<script
+        th:href="@{~/bootstrapuser/assets/js/jquery.slicknav.min.js}"></script>
+
+<!-- Jquery Slick , Owl-Carousel Plugins -->
+<script
+        th:href="@{~/bootstrapuser/assets/js/owl.carousel.min.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/slick.min.js}"></script>
+<!-- One Page, Animated-HeadLin -->
+<script
+        th:href="@{~/bootstrapuser/assets/js/wow.min.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/animated.headline.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/jquery.magnific-popup.js}"></script>
+
+<!-- Scrollup, nice-select, sticky -->
+<script
+        th:href="@{~/bootstrapuser/assets/js/jquery.scrollUp.min.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/jquery.nice-select.min.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/jquery.sticky.js}"></script>
+
+<!-- contact js -->
+<script
+        th:href="@{~/bootstrapuser/assets/js/contact.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/jquery.form.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/jquery.validate.min.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/mail-script.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/jquery.ajaxchimp.min.js}"></script>
+
+<!-- Jquery Plugins, main Jquery -->
+<script
+        th:href="@{~/bootstrapuser/assets/js/plugins.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/main.js}"></script>
+
+</body>
+</html>

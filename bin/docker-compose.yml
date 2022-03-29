@@ -1,0 +1,30 @@
+version: '3'
+services:
+  mysql-travel:
+    image: 'mysql:8.0'
+    container_name: mysql-travel
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_PASSWORD=123456
+      - MYSQL_DATABASE=tourist_product
+    ports:
+      - "3307:3306"
+    restart: "no"
+  travel:
+    image: travel-container
+    container_name: spring-travel
+    restart: "no"
+    ports:
+      - "8088:8088"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-travel:3306/tourist_product?autoReconnect=true&useSSL=false
+      SPRING_DATASOURCE_USERNAME: "root"
+      SPRING_DATASOURCE_PASSWORD: "123456"
+    build:
+      context: "./"
+      dockerfile: "Dockerfile"
+    depends_on:
+      - mysql-travel
+
+
+

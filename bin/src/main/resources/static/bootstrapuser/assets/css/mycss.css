@@ -1,0 +1,73 @@
+.mybackground{
+	background-color:#F5F3FA!important;
+}
+
+.mybackgroundheader{
+	background-color:#fff!important;
+}
+.mycolor{
+	padding:10px !important;
+	background-color:#FFF !important;
+}
+.mymenucolor a{
+    color:#111 !important;
+}
+
+figure {
+  width: 100%;
+  height: 400px;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  overflow: hidden;
+}
+
+.hover01 figure img {
+  transform: scale(1);
+  transition: 0.2s ease-in-out;
+  object-fit: cover;
+}
+.hover01 figure:hover img {
+  transform: scale(1.3);
+}
+
+.mydivbgme{
+  background: url(../img/hero/hero_2.jpeg)!important;
+	background-size: cover !important;
+	background-repeat: no-repeat;
+}
+
+.mydivbg {
+  background-size: 100% !important;
+  max-height: 400px;
+  position: relative;
+}
+.hero-cap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.myfooterbg{
+background: url(../img/service/footer_bg.jpg)!important;
+	background-size: cover !important;
+	background-repeat: no-repeat;
+
+}
+.heightim{
+height:90px!important;
+}
+
+.bootstrap-select .bs-ok-default::after {
+    width: 0.3em;
+    height: 0.6em;
+    border-width: 0 0.1em 0.1em 0;
+    transform: rotate(45deg) translateY(0.5rem);
+}
+
+.btn.dropdown-toggle:focus {
+    outline: none !important;
+}
+
+

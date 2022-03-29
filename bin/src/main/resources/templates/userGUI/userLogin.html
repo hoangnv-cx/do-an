@@ -1,0 +1,132 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <head th:insert="userGUI/fragments.html::headfile"/>
+</head>
+
+<body>
+<div th:insert="userGUI/fragments.html::menufile">
+</div>
+
+<!-- Content -->
+<div class="row justify-content-center mybackground">
+
+    <div class="col-xl-6 col-lg-12 col-md-7 ">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-8">
+                        <div class="p-5">
+                            <div class="text-center">
+
+                                <h1 class="h4 text-gray-900 mb-4">Đăng nhập</h1>
+                            </div>
+
+                            <form th:action="@{/user/j_spring_security_login}" method="POST">
+                                <div class="form-group">
+                                    <input type="text" name="userName"
+                                           class="form-control form-control-user" id="exampleFirstName"
+                                           placeholder="Tên đăng nhập">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control form-control-user"
+                                           id="exampleInputPassword" placeholder="Mật khẩu"
+                                           name="passWord">
+                                </div>
+                                <div class="form-group">
+                                    <div class="custom-control custom-checkbox small">
+                                        <input type="checkbox" class="custom-control-input"
+                                               id="customCheck" name="customCheck">
+                                        <label class="custom-control-label" for="customCheck">Lưu tài khoản?</label>
+                                    </div>
+                                </div>
+                                <label th:if="${param.error}" class="text-danger">
+                                    Tên đăng nhập hoặc mật khẩu không hợp lệ</label>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary p-4">Đăng
+                                        nhập</button>
+                                </div>
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+
+                            </form>
+                            <hr>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<footer th:insert="userGUI/fragments.html::footerfile">
+
+
+</footer>
+<!-- JS here -->
+
+<!-- All JS Custom Plugins Link Here here -->
+<script
+        th:href="@{~/bootstrapuser/assets/js/vendor/modernizr-3.5.0.min.js}"></script>
+
+<!-- Jquery, Popper, Bootstrap -->
+<script
+        th:href="@{~/bootstrapuser/assets/js/vendor/jquery-1.12.4.min.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/popper.min.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/bootstrap.min.js}"></script>
+<!-- Jquery Mobile Menu -->
+<script
+        th:href="@{~/bootstrapuser/assets/js/jquery.slicknav.min.js}"></script>
+
+<!-- Jquery Slick , Owl-Carousel Plugins -->
+<script
+        th:href="@{~/bootstrapuser/assets/js/owl.carousel.min.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/slick.min.js}"></script>
+<!-- One Page, Animated-HeadLin -->
+<script
+        th:href="@{~/bootstrapuser/assets/js/wow.min.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/animated.headline.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/jquery.magnific-popup.js}"></script>
+
+<!-- Scrollup, nice-select, sticky -->
+<script
+        th:href="@{~/bootstrapuser/assets/js/jquery.scrollUp.min.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/jquery.nice-select.min.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/jquery.sticky.js}"></script>
+
+<!-- contact js -->
+<script
+        th:href="@{~/bootstrapuser/assets/js/contact.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/jquery.form.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/jquery.validate.min.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/mail-script.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/jquery.ajaxchimp.min.js}"></script>
+
+<!-- Jquery Plugins, main Jquery -->
+<script
+        th:href="@{~/bootstrapuser/assets/js/plugins.js}"></script>
+<script
+        th:href="@{~/bootstrapuser/assets/js/main.js}"></script>
+
+</body>
+</html>
